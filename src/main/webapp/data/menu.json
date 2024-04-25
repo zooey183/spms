@@ -3,11 +3,11 @@
   text: "学生兼职管理系统"
 },
   {
-    id: "bookList",
-    pid: "book",
-    text: "图书列表信息",
-    iconCls: "icon-book",
-    url: "/book/bookList.html",
+    id: "studentList",
+    pid: "spms",
+    text: "学生列表信息",
+    iconCls: "icon-student",
+    url: "/spms/studentList.html",
     iconPosition: "top"
   },
 

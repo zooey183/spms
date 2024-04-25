@@ -60,10 +60,10 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public boolean repeatStudent(String studentname) {
+    public boolean repeatStudent(String studentName) {
         String sql = "select count(*) from student where studentname = ?";
         try {
-            Number number = qr.query(sql, new ScalarHandler<>(), studentname);
+            Number number = qr.query(sql, new ScalarHandler<>(), studentName);
             return number.intValue() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,10 +85,10 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Student queryById(String studentid) {
+    public Student queryById(String studentId) {
         String sql = "select * from student where studentid=?";
         try{
-            Student student=qr.query(sql,new BeanHandler<Student>(Student.class),studentid);
+            Student student=qr.query(sql,new BeanHandler<Student>(Student.class),studentId);
             return student;
         }catch (SQLException e){
             e.printStackTrace();
@@ -98,10 +98,10 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public boolean updateStudent(Student student) {
-        String sql = "update student set studentname=?,studentpassword=?,studentsex=?,studentheadsculpture=?,school=?,major=?,phone=?,email=?";
+        String sql = "update student set studentname=?,studentpassword=?,studentsex=?,studentheadsculpture=?,school=?,major=?,phone=?,email=? where studentid = ?";
         int count = 0;
         try{
-            count = qr.update(sql,student.getStudentName(),student.getStudentPassword(),student.getStudentSex(),student.getStudentHeadSculpture(),student.getSchool(),student.getMajor(),student.getPhone(),student.getEmail());
+            count = qr.update(sql,student.getStudentName(),student.getStudentPassword(),student.getStudentSex(),student.getStudentHeadSculpture(),student.getSchool(),student.getMajor(),student.getPhone(),student.getEmail(),student.getStudentId());
             return count>0;
         }catch (SQLException e){
             e.printStackTrace();
